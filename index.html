@@ -12,6 +12,12 @@
         document.getElementById('send-message').addEventListener('click', () => {
             Telegram.WebApp.sendData('Hello, Bot!');
         });
+        Telegram.WebApp.ready();
+        Telegram.WebApp.MainButton.setText('Click Me');
+        Telegram.WebApp.MainButton.onClick(() => {
+            alert('Button clicked!');
+        });
+        Telegram.WebApp.MainButton.show();
     </script>
 </body>
 </html>
