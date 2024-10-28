@@ -4,20 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Mini App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome to My Mini App!</h1>
-    <button id="send-message">Send Message to Bot</button>
+    <p>Порядок действий:</p>
+    <ol style="text-align: left; margin-left: 30%;">
+        <li>Нажмите на кнопку "Войти".</li>
+        <li>Войдите на сайт.</li>
+        <li>Нажмите кнопку "Отправить".</li>
+    </ol>
+    <button onclick="redirectToSite()">Войти</button>
+
     <script>
-        document.getElementById('send-message').addEventListener('click', () => {
-            Telegram.WebApp.sendData('Hello, Bot!');
-        });
-        Telegram.WebApp.ready();
-        Telegram.WebApp.MainButton.setText('Click Me');
-        Telegram.WebApp.MainButton.onClick(() => {
-            alert('Button clicked!');
-        });
-        Telegram.WebApp.MainButton.show();
+        function redirectToSite() {
+            window.location.href = "https://eopp.epd-portal.ru/ru/"; // Замените на URL вашего сайта
+        }
     </script>
 </body>
 </html>
