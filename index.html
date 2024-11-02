@@ -42,9 +42,40 @@
     <button onclick="redirectToSite()">Войти</button>
 
     <script>
+        // Подключение к серверу WebSocket
+        const socket = new WebSocket('ws://localhost:8765');
+
+        socket.onopen = function(event) {
+            console.log("WebSocket is open now.");
+        };
+
+        socket.onmessage = function(event) {
+            console.log("Received message from server: ", event.data);
+        };
+
+        socket.onclose = function(event) {
+            console.log("WebSocket is closed now.");
+        };
+
+        socket.onerror = function(error) {
+            console.error("WebSocket error: ", error);
+        };
+
         function redirectToSite() {
             window.location.href = "https://eopp.epd-portal.ru/ru/"; // Замените на URL вашего сайта
         }
+
+        // Пример отправки сообщения на сервер
+        function sendMessageToServer(message) {
+            if (socket.readyState === WebSocket.OPEN) {
+                socket.send(message);
+            } else {
+                console.error("WebSocket is not open.");
+            }
+        }
+
+        // Пример вызова функции отправки сообщения
+        // sendMessageToServer("Hello, server!");
     </script>
 </body>
 </html>
